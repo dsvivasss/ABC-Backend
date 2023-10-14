@@ -1,0 +1,9 @@
+services:
+ 
+  auth:
+    path: auth
+ 
+  project:
+    path: project
+    dependsOn:
+      - auth
