@@ -1,10 +1,22 @@
-service: nodejs-aws-lambda
+service: abcproject
 provider:
   name: aws
   runtime: nodejs18.x
+  apiGateway:
+    restApiId:
+      "Fn::ImportValue": SharedGWrestApiId
+    restApiRootResourceId:
+      "Fn::ImportValue": SharedGWrootResourceId
 functions:
-  app:
-    handler: dist/app.handler
+  project:
+    handler: app.handler
+    name: abcproject
     events:
-      - http: ANY /
-      - http: ANY /{proxy+}
+      - http:
+          path: /project/{proxy+}
+          method: ANY
+      - http:
+          path: /project
+          method: ANY
+plugins:
+  - serverless-offline

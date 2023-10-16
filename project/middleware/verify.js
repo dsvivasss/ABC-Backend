@@ -3,6 +3,17 @@ const fetch = require('node-fetch');
 require('dotenv').config();
 
 async function verifyToken(req, res, next) {
+    const routesToSkip = [
+        '/project',
+    ];
+
+    console.log({path: req.path})
+
+    if (routesToSkip.includes(req.path)) {
+        console.log('Skipping')
+        return next();
+    }
+
     const token = req.headers.authorization.split(' ')[1]
 
     console.log({token})
@@ -13,7 +24,7 @@ async function verifyToken(req, res, next) {
         })
     }
 
-    const verify = await fetch('http://localhost:3000/verify', {
+    const verify = await fetch('https://fbv4hhaaxb.execute-api.us-east-1.amazonaws.com/dev/auth/verify', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

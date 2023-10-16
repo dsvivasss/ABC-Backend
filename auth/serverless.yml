@@ -1,10 +1,25 @@
-service: nodejs-aws-lambda
+service: abcauth
 provider:
   name: aws
   runtime: nodejs18.x
+  apiGateway:
+    restApiId:
+      "Fn::ImportValue": SharedGWrestApiId
+    restApiRootResourceId:
+      "Fn::ImportValue": SharedGWrootResourceId
 functions:
-  app:
-    handler: dist/app.handler
+  auth:
+    handler: index.handler
+    name: abcauth
     events:
-      - http: ANY /
-      - http: ANY /{proxy+}
+      # - httpApi:
+      #     path: /auth/{proxy+}
+      #     method: '*'
+      - http:
+          path: /users
+          method: ANY
+      - http:
+          path: /users/{proxy+}
+          method: ANY
+plugins:
+  - serverless-offline

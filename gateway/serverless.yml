@@ -1,0 +1,23 @@
+service: sharedgateway
+provider:
+  name: aws
+  runtime: nodejs18.x
+resources:
+  Resources:
+    SharedGW:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: SharedGW
+  Outputs:
+    apiGatewayRestApiId:
+      Value:
+        Ref: SharedGW
+      Export:
+        Name: SharedGWrestApiId
+    apiGatewayRestApiRootResourceId:
+      Value:
+        Fn::GetAtt:
+          - SharedGW
+          - RootResourceId
+      Export:
+        Name: SharedGWrootResourceId

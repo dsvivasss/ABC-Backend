@@ -1,8 +1,8 @@
 const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
-const token = require('./middleware/token')
-const permissions = require('./middleware/permissions')
+const token = require('./middlewares/token')
+const permissions = require('./middlewares/permissions')
 const serverless = require('serverless-http')
 
 var jwt = require('jsonwebtoken');
@@ -13,20 +13,20 @@ const users = require('./users.json')
 const app = express()
 const secret = process.env.JWT_SECRET
 
-app.listen(3000)
+// app.listen(3000)
 app.use(express.json())
 app.use(morgan('tiny'))
 app.use(helmet())
-app.use(token)
+// app.use(token)
 app.use(permissions)
 
-app.get('/', (_, res) => {
+app.get('/auth/', (_, res) => {
     res.json({
         message: 'Hello World'
     })
 })
 
-app.post('/login', (req, res) => {
+app.post('/auth/login', (req, res) => {
     const {
         username,
         password
@@ -56,12 +56,30 @@ app.post('/login', (req, res) => {
 
 })
 
-app.post('/verify', (req, res) => {
+app.post('/auth/verify', (req, res) => {
     return res.status(200).json({
         message: 'Valid token and permissions'
     })
 })
 
-console.log('Server on port 3000')
+// console.log('Server on port 3000')
 
-// module.exports.handler = serverless(app)
+module.exports.handler = serverless(app)
+
+//////////////////////////////////////////////////
+
+// import express from "express";
+// import usersRoutes from "./src/routes/users.js";
+// import token from "./src/middlewares/token.js";
+
+// const app = express();
+
+// app.use(express.json()) // Middleware to accept json data
+// app.use(token)
+
+// // Routes
+// app.use(usersRoutes)
+
+// process.env.NODE_ENV !== 'test' ? app.listen(3000, () => console.log("Server running on port 3000")) : null;
+
+// export default app;

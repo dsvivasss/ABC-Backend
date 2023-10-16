@@ -1,10 +1,17 @@
 function permissions(req, res, next) {
 
-    const verify_routes = [
-        '/verify'
+    const routesToSkip = [
+        '/users/',
+        '/users/auth/',
+        '/users/ping/',
+        '/users',
+        '/users/auth',
+        '/users/ping',
     ];
 
-    if (!verify_routes.includes(req.path)) {
+    console.log({path: req.path})
+
+    if (routesToSkip.includes(req.path)) {
         return next();
     }
 

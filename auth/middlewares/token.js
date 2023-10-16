@@ -2,7 +2,12 @@ const jwt = require('jsonwebtoken');
 
 function token(req, res, next) {
     const routesToSkip = [
-        '/login',
+        '/users/',
+        '/users/auth/',
+        '/users/ping/',
+        '/users',
+        '/users/auth',
+        '/users/ping',
     ];
 
     if (routesToSkip.includes(req.path)) {
@@ -26,15 +31,19 @@ function token(req, res, next) {
     }
 
     try {
-        const payload = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        if (Date.now() > payload.exp) {
+        // date without time and timezone
+        const date = new Date().toISOString().split('T')[0];
+        const today = new Date(date);
+
+        if (new Date(decoded.expireAt) < today) {
             return res.status(401).json({
                 message: 'Token expired'
             });
         }
 
-        req.tokenPayload = payload;
+        req.userId = decoded.id;
         next();
 
     } catch (err) {

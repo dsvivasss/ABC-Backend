@@ -8,7 +8,7 @@ const serverless = require('serverless-http')
 
 const app = express()
 
-app.listen(5001)
+// app.listen(5001)
 app.use(express.json())
 app.use(morgan('tiny'))
 app.use(helmet())
@@ -37,9 +37,15 @@ app.post('/project/', (req, res) => {
 })
 
 app.get('/project', (_, res) => {
+    return res.json({
+        message: 'Hello World deployed'
+    })
+})
+
+app.get('/project', (_, res) => {
     return res.json(projects)
 })
 
-console.log('Server running at http://localhost:5001')
+// console.log('Server running at http://localhost:5001')
 
-// module.exports.handler = serverless(app)
+module.exports.handler = serverless(app)

@@ -1,9 +1,14 @@
 services:
+
+  gateway:
+    path: gateway
  
   auth:
     path: auth
+    dependsOn:
+      - gateway
  
   project:
     path: project
     dependsOn:
-      - auth
+      - gateway

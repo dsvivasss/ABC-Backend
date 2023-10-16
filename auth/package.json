@@ -5,18 +5,26 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
-    "build": "serverless deploy"
+    "dev": "nodemon index.mjs",
+    "build": "serverless deploy",
+    "offline": "serverless offline start"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.1",
-    "serverless-http": "^3.2.0"
+    "pg": "^8.11.3",
+    "sequelize": "^6.33.0",
+    "serverless-http": "^3.2.0",
+    "serverless-offline": "^13.2.0"
+  },
+  "devDependencies": {
+    "serverless-ignore": "^0.2.1"
   }
 }
