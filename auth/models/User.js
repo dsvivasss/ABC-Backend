@@ -4,6 +4,9 @@ const {
 } = require("sequelize");
 const Sequelize = require("sequelize");
 
+const env = process.env.NODE_ENV
+console.log('env: ', env);
+
 const User = sequelize.define("user", {
     id: {
         type: DataTypes.INTEGER,
@@ -44,15 +47,39 @@ const User = sequelize.define("user", {
     },
     country: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     skills: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false
+        type: env !== 'test' ? DataTypes.ARRAY(DataTypes.STRING) : DataTypes.STRING,
+        allowNull: false,
+        get() {
+            const rawValue = this.getDataValue('skills')
+            if (env !== 'test') return rawValue
+            return rawValue ? JSON.parse(rawValue) : []
+        },
+        set(value) {
+            if (env !== 'test') {
+                this.setDataValue('skills', value)
+                return
+            }
+            this.setDataValue('skills', JSON.stringify(value))
+        }
     },
     personality: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false
+        type: env !== 'test' ? DataTypes.ARRAY(DataTypes.STRING) : DataTypes.STRING,
+        allowNull: false,
+        get() {
+            const rawValue = this.getDataValue('personality')
+            if (env !== 'test') return rawValue
+            return rawValue ? JSON.parse(rawValue) : []
+        },
+        set(value) {
+            if (env !== 'test') {
+                this.setDataValue('personality', value)
+                return
+            }
+            this.setDataValue('personality', JSON.stringify(value))
+        }
     },
     salt: {
         type: DataTypes.STRING,

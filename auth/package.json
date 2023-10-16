@@ -4,10 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --forceExit",
+    "test:coverage": "jest --coverage --forceExit",
     "dev": "nodemon index.mjs",
     "build": "serverless deploy",
     "offline": "serverless offline start"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/tests/test-env.js"
+    ]
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +30,7 @@
     "sequelize": "^6.33.0",
     "serverless-http": "^3.2.0",
     "serverless-offline": "^13.2.0",
+    "sqlite3": "^5.1.6",
     "supertest": "^6.3.3"
   }
 }

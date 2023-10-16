@@ -35,8 +35,8 @@ let sequelize;
         }
     }
 
+    if(process.env.NODE_ENV === 'test') await sequelize.sync(); // force: true drops the table if it already exists
     await connect();
-    // await sequelize.sync({force: true}); // force: true drops the table if it already exists
 })();
 
 module.exports = sequelize;
