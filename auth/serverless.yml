@@ -21,5 +21,5 @@ functions:
       - http:
           path: /users/{proxy+}
           method: ANY
-plugins:
-  - serverless-offline
+# plugins:
+#   - serverless-offline
