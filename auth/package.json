@@ -23,8 +23,5 @@
     "sequelize": "^6.33.0",
     "serverless-http": "^3.2.0",
     "serverless-offline": "^13.2.0"
-  },
-  "devDependencies": {
-    "serverless-ignore": "^0.2.1"
   }
 }
