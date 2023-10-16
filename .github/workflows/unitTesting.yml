@@ -1,0 +1,19 @@
+name: CI Testing
+
+on:
+  push:
+    branches: 
+      - develop
+
+jobs:
+  test-users:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      working-directory: ./auth
+      run: npm install
+    - name: Run tests with Jest
+      working-directory: ./auth
+      run: npx jest --coverage --runInBand --detectOpenHandles --forceExit
