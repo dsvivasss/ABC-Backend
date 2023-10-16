@@ -19,6 +19,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
+    - run: serverless plugin install -n serverless-offline
     - name: serverless deploy
       uses: serverless/github-action@v3.2
       with:
