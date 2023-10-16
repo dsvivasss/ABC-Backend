@@ -1,6 +1,6 @@
-import request from 'supertest';
-import app from '../index';
-import dotenv from 'dotenv';
+const request = require('supertest');
+const app = require('../index');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
