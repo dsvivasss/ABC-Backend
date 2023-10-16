@@ -1,7 +1,6 @@
 const request = require('supertest');
 const app = require('../index');
 const dotenv = require('dotenv');
-const { AfterAll } = require('cucumber');
 
 dotenv.config();
 
