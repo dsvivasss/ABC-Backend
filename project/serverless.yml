@@ -9,12 +9,12 @@ provider:
       "Fn::ImportValue": SharedGWrootResourceId
 functions:
   project:
-    handler: app.handler
+    handler: index.handler
     name: abcproject
     events:
       - http:
-          path: /project/{proxy+}
+          path: /projects/{proxy+}
           method: ANY
       - http:
-          path: /project
+          path: /projects
           method: ANY
