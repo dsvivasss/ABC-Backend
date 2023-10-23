@@ -4,6 +4,9 @@ on:
   push:
     branches: 
       - develop
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   test-users:
@@ -16,4 +19,4 @@ jobs:
       run: npm install
     - name: Run tests with Jest
       working-directory: ./auth
-      run: npx jest --coverage --runInBand --detectOpenHandles --forceExit
+      run: npm test
