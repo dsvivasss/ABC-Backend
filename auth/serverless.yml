@@ -27,5 +27,3 @@ functions:
       - http:
           path: /companies/{proxy+}
           method: ANY
-plugins:
-  - serverless-offline
