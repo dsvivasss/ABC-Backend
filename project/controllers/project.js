@@ -28,6 +28,8 @@ const create = async (req, res) => {
             roles,
         });
 
+        console.log({project});
+
         res.status(201).json({
             id: project.id,
             company_id: project.company_id,
@@ -39,6 +41,7 @@ const create = async (req, res) => {
         });
 
     } catch (err) {
+        console.log({err});
         res.status(500).json({
             message: 'Error finding company',
             error: err

@@ -19,4 +19,16 @@ jobs:
       run: npm install
     - name: Run tests with Jest
       working-directory: ./auth
-      run: npm test
+      run: npm run test:coverage
+
+  test-projects:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      working-directory: ./project
+      run: npm install
+    - name: Run tests with Jest
+      working-directory: ./project
+      run: npm run test:coverage
