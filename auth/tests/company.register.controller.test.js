@@ -46,7 +46,6 @@ describe('Register Company Endpoint', () => {
             .post('/companies/')
             .send({
                 email: company.email,
-                email: company.email,
             });
 
         expect(res.statusCode).toEqual(400);
