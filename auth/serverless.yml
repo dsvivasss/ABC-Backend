@@ -21,5 +21,11 @@ functions:
       - http:
           path: /users/{proxy+}
           method: ANY
+      - http:
+          path: /companies
+          method: ANY
+      - http:
+          path: /companies/{proxy+}
+          method: ANY
 plugins:
   - serverless-offline

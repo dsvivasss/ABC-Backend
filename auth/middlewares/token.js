@@ -8,6 +8,12 @@ function token(req, res, next) {
         '/users',
         '/users/auth',
         '/users/ping',
+        '/companies/',
+        '/companies/auth/',
+        '/companies/ping/',
+        '/companies',
+        '/companies/auth',
+        '/companies/ping',
     ];
 
     if (routesToSkip.includes(req.path)) {

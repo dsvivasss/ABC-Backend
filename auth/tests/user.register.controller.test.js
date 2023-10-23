@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 dotenv.config();
 
-describe('Login User Endpoint', () => {
+describe('Register User Endpoint', () => {
     const user = {
         username: 'testuser',
         email: 'test@email.com',
@@ -21,60 +21,50 @@ describe('Login User Endpoint', () => {
     let appServer = {}
 
     beforeAll(async () => {
-        appServer = await app.listen(3010);
-        await request(app)
-            .post('/users/')
-            .send(user)
+        appServer = app.listen(3011);
     });
 
     afterAll(async () => {
         await appServer.close();
     })
 
-    it('should log in a user when correct credentials are provided', async () => {
+    it('should register a user when valid credentials are provided', async () => {
         const res = await request(app)
-            .post('/users/auth/')
-            .send({
-                username: user.username,
-                password: user.password
-            });
+            .post('/users/')
+            .send(user);
 
-        expect(res.statusCode).toEqual(200);
+        expect(res.statusCode).toEqual(201);
+        expect(res.body).toHaveProperty('id');
+        expect(res.body).toHaveProperty('createdAt');
     });
 
-    it('should return a 404 error when incorrect username is provided', async () => {
+    it('should return a 400 error when required fields are missing', async () => {
         const res = await request(app)
-            .post('/users/auth')
-            .send({
-                username: user.username + 'wrong',
-                password: user.password
-            });
-
-        expect(res.statusCode).toEqual(404);
-    });
-
-    it('should return a 400 when missing required fields', async () => {
-        const res = await request(app)
-            .post('/users/auth')
+            .post('/users/')
             .send({
                 username: user.username,
+                email: user.email,
             });
 
         expect(res.statusCode).toEqual(400);
-    })
+        expect(res.body).toHaveProperty('message', 'Bad Request: Missing required fields');
+    });
 
-    it ('should return a 401 when password is incorrect', async () => {
+    it('should return a 412 error when user already exists with provided username or email', async () => {
+        // create a test user to simulate an existing user with the same email or username
+        await request(app)
+            .post('/users/')
+            .send(user);
+
         const res = await request(app)
-            .post('/users/auth')
-            .send({
-                username: user.username,
-                password: user.password + 'wrong'
-            });
+            .post('/users/')
+            .send(user);
 
-        expect(res.statusCode).toEqual(401);
-    })
+        expect(res.statusCode).toEqual(412);
+        expect(res.body).toHaveProperty('message', 'User already exists');
+    });
 
-    it('should return a 500 error when there is an error during user login', async () => {
+    it('should return a 500 error when there is an error during user creation', async () => {
         const mockError = new Error('Mock error message');
 
         // Replace the findOne function with a mock that throws an error
@@ -85,7 +75,7 @@ describe('Login User Endpoint', () => {
 
         // Send a request to the login route
         const response = await request(app)
-            .post('/users/auth')
+            .post('/users/')
             .send(user);
 
         // Restore the original findOne function

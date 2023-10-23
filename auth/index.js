@@ -1,5 +1,6 @@
 const express = require('express')
 const usersRoutes = require('./routes/users.js')
+const companiesRoutes = require('./routes/companies.js')
 const token = require('./middlewares/token.js')
 const serverless = require('serverless-http')
 
@@ -10,8 +11,9 @@ app.use(token)
 
 // Routes
 app.use(usersRoutes)
+app.use(companiesRoutes)
 
-process.env.NODE_ENV !== 'test' ? app.listen(3000, () => console.log("Server running on port 3000")) : null;
+// process.env.NODE_ENV === 'local' ? app.listen(3000, () => console.log("Server running on port 3000")) : null;
 
 if (process.env.NODE_ENV === 'test') {
     module.exports = app

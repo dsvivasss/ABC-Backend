@@ -7,6 +7,12 @@ function permissions(req, res, next) {
         '/users',
         '/users/auth',
         '/users/ping',
+        '/companies/',
+        '/companies/auth/',
+        '/companies/ping/',
+        '/companies',
+        '/companies/auth',
+        '/companies/ping',
     ];
 
     console.log({path: req.path})
