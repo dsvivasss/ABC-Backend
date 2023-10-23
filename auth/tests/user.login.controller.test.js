@@ -7,7 +7,7 @@ dotenv.config();
 
 describe('Login User Endpoint', () => {
     const user = {
-        username: 'testuser',
+        name: 'Daniel Suarez',
         email: 'test@email.com',
         password: 'testpassword',
         salt: 'testsalt',
@@ -35,18 +35,18 @@ describe('Login User Endpoint', () => {
         const res = await request(app)
             .post('/users/auth/')
             .send({
-                username: user.username,
+                email: user.email,
                 password: user.password
             });
 
         expect(res.statusCode).toEqual(200);
     });
 
-    it('should return a 404 error when incorrect username is provided', async () => {
+    it('should return a 404 error when incorrect email is provided', async () => {
         const res = await request(app)
             .post('/users/auth')
             .send({
-                username: user.username + 'wrong',
+                email: user.email + 'wrong',
                 password: user.password
             });
 
@@ -57,7 +57,7 @@ describe('Login User Endpoint', () => {
         const res = await request(app)
             .post('/users/auth')
             .send({
-                username: user.username,
+                email: user.email,
             });
 
         expect(res.statusCode).toEqual(400);
@@ -67,7 +67,7 @@ describe('Login User Endpoint', () => {
         const res = await request(app)
             .post('/users/auth')
             .send({
-                username: user.username,
+                email: user.email,
                 password: user.password + 'wrong'
             });
 

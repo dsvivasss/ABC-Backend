@@ -5,7 +5,7 @@ const User = require('../models/User');
 describe('Retrieve User Endpoint', () => {
 
     const user = {
-        username: 'testuser',
+        name: 'Daniel Suarez',
         email: 'test@email.com',
         password: 'testpassword',
         salt: 'testsalt',
@@ -28,7 +28,7 @@ describe('Retrieve User Endpoint', () => {
         const res = await request(app)
             .post('/users/auth/')
             .send({
-                username: user.username,
+                email: user.email,
                 password: user.password
             });
 

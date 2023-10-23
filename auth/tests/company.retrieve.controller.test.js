@@ -19,7 +19,7 @@ describe('Retrieve Company Endpoint', () => {
     let token = '';
 
     beforeAll(async () => {
-        appServer = app.listen(3012);
+        appServer = app.listen(3013);
 
         // Wait for database connection to be established before running tests
         await new Promise(r => setTimeout(r, 3000));
