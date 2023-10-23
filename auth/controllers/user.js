@@ -17,10 +17,6 @@ const register = async (req, res) => {
         personality,
     } = req.body;
 
-    // return res.status(200).json({
-    //     message: 'pong'
-    // });
-
     if (!name || !email || !password || !language || !phone || !country || !skills || !personality) {
         return res.status(400).json({
             message: 'Bad Request: Missing required fields'

@@ -20,10 +20,6 @@ const register = async (req, res) => {
         sector,
     } = req.body;
 
-    // return res.status(200).json({
-    //     message: 'pong'
-    // });
-
     if (!name || !email || !password || !size || !location || !website || !sector) {
         return res.status(400).json({
             message: 'Bad Request: Missing required fields'
@@ -118,7 +114,6 @@ const login = async (req, res) => {
         }
 
         // expire at in 3 days only date
-        // const expireAt = new Date(Date.now() + 86400 * 1000);
         const expireAt = new Date(Date.now() + 86400 * 3 * 1000).toISOString().split('T')[0];
 
         const token = jwt.sign({

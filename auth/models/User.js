@@ -100,10 +100,4 @@ const User = sequelize.define("user", {
     }
 });
 
-// User.sync({
-//         force: true
-//     })
-//     .then(() => console.log("User table created successfully"))
-//     .catch(err => console.log("Error creating User table: ", err));
-
 module.exports = User;
