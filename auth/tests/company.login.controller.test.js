@@ -1,53 +1,56 @@
 const request = require('supertest');
 const app = require('../index');
 const dotenv = require('dotenv');
-const User = require('../models/User');
+const Company = require('../models/Company');
 
 dotenv.config();
 
-describe('Login User Endpoint', () => {
-    const user = {
-        username: 'testuser',
-        email: 'test@email.com',
+describe('Login Company Endpoint', () => {
+    const company = {
+        name: 'test company',
+        email: 'company@email.com',
         password: 'testpassword',
         salt: 'testsalt',
-        language: 'es',
-        phone: '1234567890',
-        country: 'Colombia',
-        skills: ['testskill1', 'testskill2'],
-        personality: ['testpersonality1', 'testpersonality2']
+        size: '[5 - 10]',
+        location: 'Colombia',
+        website: 'www.company1.com',
+        sector: 'construction'
     }
 
     let appServer = {}
 
     beforeAll(async () => {
-        appServer = await app.listen(3010);
+        appServer = await app.listen(3001);
+
+        // Wait for database connection to be established before running tests
+        await new Promise(r => setTimeout(r, 3000));
+
         await request(app)
-            .post('/users/')
-            .send(user)
+            .post('/companies/')
+            .send(company)
     });
 
     afterAll(async () => {
         await appServer.close();
     })
 
-    it('should log in a user when correct credentials are provided', async () => {
+    it('should log in a company when correct credentials are provided', async () => {
         const res = await request(app)
-            .post('/users/auth/')
+            .post('/companies/auth/')
             .send({
-                username: user.username,
-                password: user.password
+                email: company.email,
+                password: company.password
             });
 
         expect(res.statusCode).toEqual(200);
     });
 
-    it('should return a 404 error when incorrect username is provided', async () => {
+    it('should return a 404 error when incorrect email is provided', async () => {
         const res = await request(app)
-            .post('/users/auth')
+            .post('/companies/auth')
             .send({
-                username: user.username + 'wrong',
-                password: user.password
+                email: company.email + 'wrong',
+                password: company.password
             });
 
         expect(res.statusCode).toEqual(404);
@@ -55,20 +58,20 @@ describe('Login User Endpoint', () => {
 
     it('should return a 400 when missing required fields', async () => {
         const res = await request(app)
-            .post('/users/auth')
+            .post('/companies/auth')
             .send({
-                username: user.username,
+                email: company.email,
             });
 
         expect(res.statusCode).toEqual(400);
     })
 
-    it ('should return a 401 when password is incorrect', async () => {
+    it('should return a 401 when password is incorrect', async () => {
         const res = await request(app)
-            .post('/users/auth')
+            .post('/companies/auth')
             .send({
-                username: user.username,
-                password: user.password + 'wrong'
+                email: company.email,
+                password: company.password + 'wrong'
             });
 
         expect(res.statusCode).toEqual(401);
@@ -78,18 +81,18 @@ describe('Login User Endpoint', () => {
         const mockError = new Error('Mock error message');
 
         // Replace the findOne function with a mock that throws an error
-        const originalFindOne = User.findOne;
-        User.findOne = jest.fn(() => {
+        const originalFindOne = Company.findOne;
+        Company.findOne = jest.fn(() => {
             throw mockError;
         });
 
         // Send a request to the login route
         const response = await request(app)
-            .post('/users/auth')
-            .send(user);
+            .post('/companies/auth')
+            .send(company);
 
         // Restore the original findOne function
-        User.findOne = originalFindOne;
+        Company.findOne = originalFindOne;
 
         // Assertions
         expect(response.status).toBe(500); // Check for a 500 status code

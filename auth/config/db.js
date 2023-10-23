@@ -8,6 +8,7 @@ let sequelize;
     if (process.env.NODE_ENV === 'test') {
         sequelize = new Sequelize('sqlite:///:memory:', {
             dialect: 'sqlite',
+            logging: false
         });
     } else {
         sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -36,6 +37,7 @@ let sequelize;
     }
 
     if(process.env.NODE_ENV === 'test') await sequelize.sync(); // force: true drops the table if it already exists
+    // await sequelize.sync();
     await connect();
 })();
 
