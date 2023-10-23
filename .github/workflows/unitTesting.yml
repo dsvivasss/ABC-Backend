@@ -32,3 +32,18 @@ jobs:
     - name: Run tests with Jest
       working-directory: ./project
       run: npm run test:coverage
+  
+  generate-coverage:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      run: npm install
+    - name: Run tests with Jest
+      run: npm run test:coverage
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: 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
+        SONAR_TOKEN: d3c3439681b7a5ef2bff28e75f81d725d59d68e3
