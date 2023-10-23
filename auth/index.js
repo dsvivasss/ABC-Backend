@@ -3,11 +3,13 @@ const usersRoutes = require('./routes/users.js')
 const companiesRoutes = require('./routes/companies.js')
 const token = require('./middlewares/token.js')
 const serverless = require('serverless-http')
+const cors = require('cors')
 
 const app = express();
 
 app.use(express.json()) // Middleware to accept json data
 app.use(token)
+app.use(cors())
 
 // Routes
 app.use(usersRoutes)

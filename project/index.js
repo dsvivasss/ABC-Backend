@@ -2,10 +2,12 @@ const express = require('express')
 const projectRoutes = require('./routes/projects.js')
 // const token = require('./middlewares/token.js')
 const serverless = require('serverless-http')
+const cors = require('cors')
 
 const app = express();
 
 app.use(express.json()) // Middleware to accept json data
+app.use(cors())
 // app.use(token)
 
 // Routes
