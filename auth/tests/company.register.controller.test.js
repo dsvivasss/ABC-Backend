@@ -20,7 +20,7 @@ describe('Register Company Endpoint', () => {
     let appServer = {}
 
     beforeAll(async () => {
-        appServer = app.listen(3011);
+        appServer = app.listen(3014);
         
         // Wait for database connection to be established before running tests
         await new Promise(r => setTimeout(r, 3000));

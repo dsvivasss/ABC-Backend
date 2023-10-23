@@ -2,16 +2,12 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const {
-    Op
-} = require("sequelize");
-
 const register = async (req, res) => {
 
     const saltRounds = 10;
 
     const {
-        username,
+        name,
         email,
         password,
         language,
@@ -25,7 +21,7 @@ const register = async (req, res) => {
     //     message: 'pong'
     // });
 
-    if (!username || !email || !password || !language || !phone || !country || !skills || !personality) {
+    if (!name || !email || !password || !language || !phone || !country || !skills || !personality) {
         return res.status(400).json({
             message: 'Bad Request: Missing required fields'
         });
@@ -33,18 +29,12 @@ const register = async (req, res) => {
 
     let userExists;
     try {
-        // check if user already exists with username or email
+        // check if user already exists with email
         userExists = await User.findOne({
             where: {
-                [Op.or]: [{
-                    username
-                }, {
-                    email
-                }]
+                email
             }
         });
-
-
 
         if (userExists) {
             return res.status(412).json({
@@ -57,7 +47,7 @@ const register = async (req, res) => {
 
                 // Store hash in database here
                 const user = new User({
-                    username,
+                    name,
                     email,
                     password: hash.toString(),
                     salt,
@@ -90,11 +80,11 @@ const register = async (req, res) => {
 const login = async (req, res) => {
 
     const {
-        username,
+        email,
         password
     } = req.body;
 
-    if (!username || !password) {
+    if (!email || !password) {
         return res.status(400).json({
             message: 'Bad Request: Missing required fields'
         });
@@ -104,7 +94,7 @@ const login = async (req, res) => {
 
         const user = await User.findOne({
             where: {
-                username
+                email
             }
         });
 

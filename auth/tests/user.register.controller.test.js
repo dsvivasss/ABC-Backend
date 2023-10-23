@@ -7,7 +7,7 @@ dotenv.config();
 
 describe('Register User Endpoint', () => {
     const user = {
-        username: 'testuser',
+        name: 'Daniel Suarez',
         email: 'test@email.com',
         password: 'testpassword',
         salt: 'testsalt',
@@ -42,7 +42,6 @@ describe('Register User Endpoint', () => {
         const res = await request(app)
             .post('/users/')
             .send({
-                username: user.username,
                 email: user.email,
             });
 
@@ -50,7 +49,7 @@ describe('Register User Endpoint', () => {
         expect(res.body).toHaveProperty('message', 'Bad Request: Missing required fields');
     });
 
-    it('should return a 412 error when user already exists with provided username or email', async () => {
+    it('should return a 412 error when user already exists with provided email', async () => {
         // create a test user to simulate an existing user with the same email or username
         await request(app)
             .post('/users/')
