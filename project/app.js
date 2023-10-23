@@ -13,6 +13,7 @@ app.use(express.json())
 app.use(morgan('tiny'))
 app.use(helmet())
 app.use(verify)
+app.use(cors())
 
 app.post('/project/', (req, res) => {
 

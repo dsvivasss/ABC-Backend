@@ -1,6 +1,3 @@
-// import { Router } from "express";
-// import { register, login, retrieveUser, healthCheck } from "../controllers/user.js";
-
 const {
     Router
 } = require("express");

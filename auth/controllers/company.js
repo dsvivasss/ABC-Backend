@@ -1,6 +1,10 @@
-const User = require('../models/User');
+const Company = require('../models/Company');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
+const {
+    Op
+} = require("sequelize");
 
 const register = async (req, res) => {
 
@@ -10,51 +14,53 @@ const register = async (req, res) => {
         name,
         email,
         password,
-        language,
-        phone,
-        country,
-        skills,
-        personality,
+        size,
+        location,
+        website,
+        sector,
     } = req.body;
 
-    if (!name || !email || !password || !language || !phone || !country || !skills || !personality) {
+    if (!name || !email || !password || !size || !location || !website || !sector) {
         return res.status(400).json({
             message: 'Bad Request: Missing required fields'
         });
     }
 
-    let userExists;
     try {
-        // check if user already exists with email
-        userExists = await User.findOne({
+
+        // check if user already exists with username or email
+        const companyExists = await Company.findOne({
             where: {
-                email
+                [Op.or]: [{
+                    name
+                }, {
+                    email
+                }]
             }
         });
 
-        if (userExists) {
+        if (companyExists) {
             return res.status(412).json({
-                message: 'User already exists'
+                message: 'Company already exists'
             });
         }
 
-        bcrypt.genSalt(saltRounds, function (err, salt) {
-            bcrypt.hash(password, salt, function (err, hash) {
+        bcrypt.genSalt(saltRounds, function (_, salt) {
+            bcrypt.hash(password, salt, function (_, hash) {
 
                 // Store hash in database here
-                const user = new User({
+                const company = new Company({
                     name,
                     email,
                     password: hash.toString(),
                     salt,
-                    language,
-                    phone,
-                    country,
-                    skills,
-                    personality,
+                    size,
+                    location,
+                    website,
+                    sector,
                 });
 
-                user.save()
+                company.save()
                     .then(result => {
                         res.status(201).json({
                             id: result.id,
@@ -66,7 +72,7 @@ const register = async (req, res) => {
 
     } catch (err) {
         res.status(500).json({
-            message: 'Error finding user',
+            message: 'Error finding company',
             error: err
         });
     }
@@ -88,19 +94,19 @@ const login = async (req, res) => {
 
     try {
 
-        const user = await User.findOne({
+        const company = await Company.findOne({
             where: {
                 email
             }
         });
 
-        if (!user) {
+        if (!company) {
             return res.status(404).json({
-                message: 'User not found'
+                message: 'Company not found'
             });
         }
 
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+        const isPasswordValid = await bcrypt.compare(password, company.password);
         if (!isPasswordValid) {
             return res.status(401).json({
                 message: 'Invalid password'
@@ -108,60 +114,56 @@ const login = async (req, res) => {
         }
 
         // expire at in 3 days only date
-        // const expireAt = new Date(Date.now() + 86400 * 1000);
         const expireAt = new Date(Date.now() + 86400 * 3 * 1000).toISOString().split('T')[0];
 
         const token = jwt.sign({
-            id: user.id,
+            id: company.id,
             expireAt,
         }, process.env.JWT_SECRET, {
             expiresIn: 86400, // 24 hours
 
         });
 
-        user.token = token;
-        user.expireAt = expireAt;
+        company.token = token;
+        company.expireAt = expireAt;
 
-        await user.save();
+        await company.save();
 
         res.status(200).json({
-            id: user.id,
+            id: company.id,
             token,
             expireAt,
         });
 
     } catch (err) {
         res.status(500).json({
-            message: 'Error finding user',
-            error: err
+            message: 'Error finding company',
+            error: 'ERRor ' + err
         });
     }
 };
 
 
 
-const retrieveUser = async (req, res) => {
+const retrieveCompany = async (req, res) => {
 
-    try {
+    const company = await Company.findOne({
+        where: {
+            id: req.userId
+        }
+    });
 
-        const user = await User.findOne({
-            where: {
-                id: req.userId
-            }
-        });
-
-        res.status(200).json({
-            id: user.id,
-            username: user.username,
-            email: user.email
-        });
-
-    } catch (err) {
-        res.status(500).json({
-            message: 'Error finding user',
-            error: err
+    if (!company) {
+        return res.status(404).json({
+            message: 'Company not found'
         });
     }
+
+    res.status(200).json({
+        id: company.id,
+        username: company.username,
+        email: company.email
+    });
 }
 
 const healthCheck = async (req, res) => {
@@ -171,6 +173,6 @@ const healthCheck = async (req, res) => {
 module.exports = {
     register,
     login,
-    retrieveUser,
+    retrieveCompany,
     healthCheck,
 };

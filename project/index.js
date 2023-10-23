@@ -1,19 +1,17 @@
 const express = require('express')
-const usersRoutes = require('./routes/users.js')
-const companiesRoutes = require('./routes/companies.js')
-const token = require('./middlewares/token.js')
+const projectRoutes = require('./routes/projects.js')
+// const token = require('./middlewares/token.js')
 const serverless = require('serverless-http')
 const cors = require('cors')
 
 const app = express();
 
 app.use(express.json()) // Middleware to accept json data
-app.use(token)
 app.use(cors())
+// app.use(token)
 
 // Routes
-app.use(usersRoutes)
-app.use(companiesRoutes)
+app.use(projectRoutes)
 
 // process.env.NODE_ENV === 'local' ? app.listen(3000, () => console.log("Server running on port 3000")) : null;
 

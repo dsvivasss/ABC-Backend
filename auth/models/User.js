@@ -4,16 +4,18 @@ const {
 } = require("sequelize");
 const Sequelize = require("sequelize");
 
+const env = process.env.NODE_ENV
+console.log('env: ', env);
+
 const User = sequelize.define("user", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    username: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
     },
     email: {
         type: DataTypes.STRING,
@@ -44,15 +46,39 @@ const User = sequelize.define("user", {
     },
     country: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     skills: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false
+        type: env !== 'test' ? DataTypes.ARRAY(DataTypes.STRING) : DataTypes.STRING,
+        allowNull: false,
+        get() {
+            const rawValue = this.getDataValue('skills')
+            if (env !== 'test') return rawValue
+            return rawValue ? JSON.parse(rawValue) : []
+        },
+        set(value) {
+            if (env !== 'test') {
+                this.setDataValue('skills', value)
+                return
+            }
+            this.setDataValue('skills', JSON.stringify(value))
+        }
     },
     personality: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false
+        type: env !== 'test' ? DataTypes.ARRAY(DataTypes.STRING) : DataTypes.STRING,
+        allowNull: false,
+        get() {
+            const rawValue = this.getDataValue('personality')
+            if (env !== 'test') return rawValue
+            return rawValue ? JSON.parse(rawValue) : []
+        },
+        set(value) {
+            if (env !== 'test') {
+                this.setDataValue('personality', value)
+                return
+            }
+            this.setDataValue('personality', JSON.stringify(value))
+        }
     },
     salt: {
         type: DataTypes.STRING,
@@ -73,11 +99,5 @@ const User = sequelize.define("user", {
         defaultValue: DataTypes.NOW
     }
 });
-
-// User.sync({
-//         force: true
-//     })
-//     .then(() => console.log("User table created successfully"))
-//     .catch(err => console.log("Error creating User table: ", err));
 
 module.exports = User;
