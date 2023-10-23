@@ -39,6 +39,7 @@
     "node-fetch": "^2.7.0",
     "nodemon": "^3.0.1",
     "pg": "^8.11.3",
+    "jest": "^29.7.0",
     "sequelize": "^6.33.0",
     "serverless": "^3.35.2",
     "serverless-http": "^3.2.0",
