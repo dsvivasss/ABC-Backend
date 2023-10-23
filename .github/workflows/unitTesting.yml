@@ -20,11 +20,6 @@ jobs:
     - name: Run tests with Jest
       working-directory: ./auth
       run: npm run test:coverage
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: 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
-        SONAR_TOKEN: d3c3439681b7a5ef2bff28e75f81d725d59d68e3
 
   test-projects:
     runs-on: ubuntu-latest
@@ -37,8 +32,7 @@ jobs:
     - name: Run tests with Jest
       working-directory: ./project
       run: npm run test:coverage
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: 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
-        SONAR_TOKEN: d3c3439681b7a5ef2bff28e75f81d725d59d68e3
+
+
+
+      
