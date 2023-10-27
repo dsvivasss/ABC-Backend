@@ -1,0 +1,554 @@
+[
+    {
+        "difficulty_level": "basic",
+        "topic": "python",
+        "description": "What is the output of print(2%6)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "2",
+                "correct": false
+            },
+            {
+                "value": "0",
+                "correct": true
+            },
+            {
+                "value": "3",
+                "correct": false
+            },
+            {
+                "value": "1",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "python",
+        "description": "What is the output of print(2**3)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "8",
+                "correct": true
+            },
+            {
+                "value": "6",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "python",
+        "description": "What is the output of print(2*3)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "6",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "python",
+        "description": "What is the output of print(2+3)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "5",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "python",
+        "description": "What is the output of print(2-3)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "-1",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "python",
+        "description": "What is a dictionary in Python?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "A data structure",
+                "correct": true
+            },
+            {
+                "value": "A function",
+                "correct": false
+            },
+            {
+                "value": "A module",
+                "correct": false
+            },
+            {
+                "value": "A class",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "python",
+        "description": "What is the output of print(9//2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "4",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "python",
+        "description": "What is the output of print(9/2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "4.5",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "python",
+        "description": "What is the output of print(9%2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "1",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "python",
+        "description": "What is the output of print(9**2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "81",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "hard",
+        "topic": "javascript",
+        "description": "What is an Array?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "A data structure",
+                "correct": true
+            },
+            {
+                "value": "A function",
+                "correct": false
+            },
+            {
+                "value": "A module",
+                "correct": false
+            },
+            {
+                "value": "A class",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "hard",
+        "topic": "javascript",
+        "description": "What is the output of print(9//2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "4",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "hard",
+        "topic": "javascript",
+        "description": "What is the output of print(9/2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "4.5",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "hard",
+        "topic": "javascript",
+        "description": "What is the output of print(9%2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "1",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "hard",
+        "topic": "javascript",
+        "description": "What is the output of print(9**2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "81",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "javascript",
+        "description": "What is the output of print(9**2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "81",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "javascript",
+        "description": "What is the output of print(9**2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "81",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "javascript",
+        "description": "What is the output of print(9**2)?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "81",
+                "correct": true
+            },
+            {
+                "value": "8",
+                "correct": false
+            },
+            {
+                "value": "9",
+                "correct": false
+            },
+            {
+                "value": "2",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "SQL",
+        "description": "What is the command to select all columns from a table named 'Persons'?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "SELECT * FROM Persons",
+                "correct": true
+            },
+            {
+                "value": "SELECT Persons",
+                "correct": false
+            },
+            {
+                "value": "SELECT Persons.*",
+                "correct": false
+            },
+            {
+                "value": "SELECT * Persons",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "SQL",
+        "description": "What is the command to select all columns from a table named 'Persons'?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "SELECT * FROM Persons",
+                "correct": true
+            },
+            {
+                "value": "SELECT Persons",
+                "correct": false
+            },
+            {
+                "value": "SELECT Persons.*",
+                "correct": false
+            },
+            {
+                "value": "SELECT * Persons",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "SQL",
+        "description": "What is the command to select all columns from a table named 'Persons'?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "SELECT * FROM Persons",
+                "correct": true
+            },
+            {
+                "value": "SELECT Persons",
+                "correct": false
+            },
+            {
+                "value": "SELECT Persons.*",
+                "correct": false
+            },
+            {
+                "value": "SELECT * Persons",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "SQL",
+        "description": "What is the command to select all columns from a table named 'Persons'?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "SELECT * FROM Persons",
+                "correct": true
+            },
+            {
+                "value": "SELECT Persons",
+                "correct": false
+            },
+            {
+                "value": "SELECT Persons.*",
+                "correct": false
+            },
+            {
+                "value": "SELECT * Persons",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "SQL",
+        "description": "What is the command to select all columns from a table named 'Persons'?",
+        "type_question": "multiple_choice",
+        "options": [
+            {
+                "value": "SELECT * FROM Persons",
+                "correct": true
+            },
+            {
+                "value": "SELECT Persons",
+                "correct": false
+            },
+            {
+                "value": "SELECT Persons.*",
+                "correct": false
+            },
+            {
+                "value": "SELECT * Persons",
+                "correct": false
+            }
+        ]
+    }
+]
