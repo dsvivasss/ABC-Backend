@@ -1,5 +1,6 @@
 const express = require('express')
-const projectRoutes = require('./routes/tests.js')
+const questionRoutes = require('./routes/questions.js')
+const testRoutes = require('./routes/tests.js')
 // const token = require('./middlewares/token.js')
 const serverless = require('serverless-http')
 const cors = require('cors')
@@ -11,7 +12,8 @@ app.use(cors())
 // app.use(token)
 
 // Routes
-app.use(projectRoutes)
+app.use(questionRoutes)
+app.use(testRoutes)
 
 // process.env.NODE_ENV === 'local' ? app.listen(3000, () => console.log("Server running on port 3000")) : null;
 

@@ -18,5 +18,9 @@ functions:
       - http:
           path: /tests
           method: ANY
-plugins:
-  - serverless-offline
+      - http:
+          path: /questions/{proxy+}
+          method: ANY
+      - http:
+          path: /questions
+          method: ANY

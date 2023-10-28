@@ -2,15 +2,13 @@ const {
     Router
 } = require("express");
 const {
-    populate,
-    selectQuestion,
+    create,
     healthCheck
 } = require("../controllers/test.js");
 
 const router = Router();
 
-router.post("/tests/populate", populate);
-router.get("/tests/questions/:topic/:difficulty_level/:option", selectQuestion);
+router.post("/tests", create);
 router.get("/tests/ping", healthCheck);
 
 module.exports = router;

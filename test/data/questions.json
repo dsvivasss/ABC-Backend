@@ -1,24 +1,22 @@
-[
-    {
+[{
         "difficulty_level": "basic",
         "topic": "python",
-        "description": "What is the output of print(2%6)?",
+        "description": "What is the result of 5 + 3 in Python?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "2",
-                "correct": false
-            },
-            {
-                "value": "0",
+        "options": [{
+                "value": "8",
                 "correct": true
             },
             {
-                "value": "3",
+                "value": "53",
                 "correct": false
             },
             {
-                "value": "1",
+                "value": "15",
+                "correct": false
+            },
+            {
+                "value": "Error",
                 "correct": false
             }
         ]
@@ -26,23 +24,22 @@
     {
         "difficulty_level": "basic",
         "topic": "python",
-        "description": "What is the output of print(2**3)?",
+        "description": "How do you define a variable in Python?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "8",
+        "options": [{
+                "value": "Using the '=' operator",
                 "correct": true
             },
             {
-                "value": "6",
+                "value": "With the 'var' keyword",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "By declaring 'int' or 'str'",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "You don't need to declare variables in Python",
                 "correct": false
             }
         ]
@@ -50,23 +47,22 @@
     {
         "difficulty_level": "basic",
         "topic": "python",
-        "description": "What is the output of print(2*3)?",
+        "description": "What is the primary purpose of 'if' statements in Python?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "6",
+        "options": [{
+                "value": "To make decisions and execute code conditionally",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "To define functions",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "To create loops",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "To print text",
                 "correct": false
             }
         ]
@@ -74,23 +70,22 @@
     {
         "difficulty_level": "basic",
         "topic": "python",
-        "description": "What is the output of print(2+3)?",
+        "description": "What data type is used for whole numbers in Python?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "5",
+        "options": [{
+                "value": "int",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "float",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "str",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "bool",
                 "correct": false
             }
         ]
@@ -98,23 +93,22 @@
     {
         "difficulty_level": "basic",
         "topic": "python",
-        "description": "What is the output of print(2-3)?",
+        "description": "What does the 'len()' function do in Python?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "-1",
+        "options": [{
+                "value": "Returns the length of a sequence",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "Generates random numbers",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "Finds the maximum value",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "Counts the number of 'None' values",
                 "correct": false
             }
         ]
@@ -122,119 +116,344 @@
     {
         "difficulty_level": "medium",
         "topic": "python",
-        "description": "What is a dictionary in Python?",
+        "description": "What is the purpose of a 'for' loop in Python?",
         "type_question": "multiple_choice",
-        "options": [
+        "options": [{
+                "value": "Iterating over a sequence of elements",
+                "correct": true
+            },
+            {
+                "value": "Defining a function",
+                "correct": false
+            },
+            {
+                "value": "Creating a new variable",
+                "correct": false
+            },
+            {
+                "value": "Performing mathematical calculations",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "python",
+        "description": "What is a Python tuple?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "An immutable sequence of elements",
+                "correct": true
+            },
+            {
+                "value": "A type of loop",
+                "correct": false
+            },
+            {
+                "value": "A way to define classes",
+                "correct": false
+            },
+            {
+                "value": "A data type for text",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "python",
+        "description": "What does the 'try' and 'except' block do in Python?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "Handles exceptions and errors",
+                "correct": true
+            },
+            {
+                "value": "Creates a list",
+                "correct": false
+            },
+            {
+                "value": "Defines a function",
+                "correct": false
+            },
+            {
+                "value": "Checks for even numbers",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "python",
+        "description": "What is the purpose of a Python dictionary?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "To store key-value pairs",
+                "correct": true
+            },
+            {
+                "value": "To perform mathematical operations",
+                "correct": false
+            },
+            {
+                "value": "To create loops",
+                "correct": false
+            },
+            {
+                "value": "To display messages",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "hard",
+        "topic": "python",
+        "description": "What is the Global Interpreter Lock (GIL) in Python?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "A mutex that protects access to Python objects",
+                "correct": true
+            },
+            {
+                "value": "A programming language",
+                "correct": false
+            },
+            {
+                "value": "A mathematical formula",
+                "correct": false
+            },
             {
                 "value": "A data structure",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "hard",
+        "topic": "python",
+        "description": "What is the purpose of the 'yield' keyword in Python?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "Used in generator functions to yield values lazily",
                 "correct": true
             },
             {
-                "value": "A function",
+                "value": "To stop the execution of a program",
                 "correct": false
             },
             {
-                "value": "A module",
+                "value": "To create a new variable",
                 "correct": false
             },
             {
-                "value": "A class",
+                "value": "To define a class",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "javascript",
+        "description": "What is the result of '5 + 3' in JavaScript?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "8",
+                "correct": true
+            },
+            {
+                "value": "53",
+                "correct": false
+            },
+            {
+                "value": "15",
+                "correct": false
+            },
+            {
+                "value": "Error",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "javascript",
+        "description": "How do you declare a variable in JavaScript?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "Using the 'var' keyword",
+                "correct": true
+            },
+            {
+                "value": "With the 'let' keyword",
+                "correct": false
+            },
+            {
+                "value": "By declaring 'int' or 'str'",
+                "correct": false
+            },
+            {
+                "value": "You don't need to declare variables in JavaScript",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "javascript",
+        "description": "What is the primary purpose of 'if' statements in JavaScript?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "To make decisions and execute code conditionally",
+                "correct": true
+            },
+            {
+                "value": "To define functions",
+                "correct": false
+            },
+            {
+                "value": "To create loops",
+                "correct": false
+            },
+            {
+                "value": "To display a message",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "javascript",
+        "description": "What data type is used for whole numbers in JavaScript?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "number",
+                "correct": true
+            },
+            {
+                "value": "float",
+                "correct": false
+            },
+            {
+                "value": "string",
+                "correct": false
+            },
+            {
+                "value": "boolean",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "javascript",
+        "description": "What does the 'console.log()' function do in JavaScript?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "Outputs messages or variables to the console",
+                "correct": true
+            },
+            {
+                "value": "Performs mathematical operations",
+                "correct": false
+            },
+            {
+                "value": "Creates a new function",
+                "correct": false
+            },
+            {
+                "value": "Defines a class",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "medium",
-        "topic": "python",
-        "description": "What is the output of print(9//2)?",
+        "topic": "javascript",
+        "description": "What is the purpose of a 'for' loop in JavaScript?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "4",
+        "options": [{
+                "value": "Iterating over a sequence of elements",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "Defining a function",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "Creating a new variable",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "Performing mathematical calculations",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "medium",
-        "topic": "python",
-        "description": "What is the output of print(9/2)?",
+        "topic": "javascript",
+        "description": "What is a JavaScript array?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "4.5",
+        "options": [{
+                "value": "An ordered list of values",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "A type of loop",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "A way to define objects",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "A data type for text",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "medium",
-        "topic": "python",
-        "description": "What is the output of print(9%2)?",
+        "topic": "javascript",
+        "description": "What is the purpose of the 'this' keyword in JavaScript?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "1",
+        "options": [{
+                "value": "Refers to the current object",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "Indicates a comment",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "Represents a number",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "Defines a function",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "medium",
-        "topic": "python",
-        "description": "What is the output of print(9**2)?",
+        "topic": "javascript",
+        "description": "What is the purpose of the 'typeof' operator in JavaScript?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "81",
+        "options": [{
+                "value": "Determines the data type of a value",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "Performs mathematical operations",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "Creates a new object",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "Defines a class",
                 "correct": false
             }
         ]
@@ -242,23 +461,22 @@
     {
         "difficulty_level": "hard",
         "topic": "javascript",
-        "description": "What is an Array?",
+        "description": "What is the purpose of a JavaScript closure?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "A data structure",
+        "options": [{
+                "value": "A function that has access to its own scope, even after it's returned",
                 "correct": true
             },
             {
-                "value": "A function",
+                "value": "A way to close a web page",
                 "correct": false
             },
             {
-                "value": "A module",
+                "value": "A type of loop",
                 "correct": false
             },
             {
-                "value": "A class",
+                "value": "A mechanism to create tables",
                 "correct": false
             }
         ]
@@ -266,287 +484,781 @@
     {
         "difficulty_level": "hard",
         "topic": "javascript",
-        "description": "What is the output of print(9//2)?",
+        "description": "What is the Document Object Model (DOM) in JavaScript used for?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "4",
+        "options": [{
+                "value": "To represent and interact with web page content",
                 "correct": true
             },
             {
+                "value": "To create server-side applications",
+                "correct": false
+            },
+            {
+                "value": "To perform database operations",
+                "correct": false
+            },
+            {
+                "value": "To handle authentication",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "java",
+        "description": "What is the result of '5 + 3' in Java?",
+        "type_question": "multiple_choice",
+        "options": [{
                 "value": "8",
+                "correct": true
+            },
+            {
+                "value": "53",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "15",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "Error",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "java",
+        "description": "How do you declare a variable in Java?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "Using the 'int' keyword",
+                "correct": true
+            },
+            {
+                "value": "With the 'var' keyword",
+                "correct": false
+            },
+            {
+                "value": "By declaring 'str'",
+                "correct": false
+            },
+            {
+                "value": "You don't need to declare variables in Java",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "java",
+        "description": "What is the primary purpose of 'if' statements in Java?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "To make decisions and execute code conditionally",
+                "correct": true
+            },
+            {
+                "value": "To define functions",
+                "correct": false
+            },
+            {
+                "value": "To create loops",
+                "correct": false
+            },
+            {
+                "value": "To print a message",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "java",
+        "description": "What data type is used for whole numbers in Java?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "int",
+                "correct": true
+            },
+            {
+                "value": "float",
+                "correct": false
+            },
+            {
+                "value": "str",
+                "correct": false
+            },
+            {
+                "value": "bool",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "java",
+        "description": "What does the 'System.out.println()' function do in Java?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "Prints text or values to the console",
+                "correct": true
+            },
+            {
+                "value": "Performs mathematical operations",
+                "correct": false
+            },
+            {
+                "value": "Defines a class",
+                "correct": false
+            },
+            {
+                "value": "Creates a new variable",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "java",
+        "description": "What is a Java class?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "A blueprint for creating objects",
+                "correct": true
+            },
+            {
+                "value": "A loop structure",
+                "correct": false
+            },
+            {
+                "value": "A data type for numbers",
+                "correct": false
+            },
+            {
+                "value": "A way to declare variables",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "java",
+        "description": "What is inheritance in Java?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "The mechanism by which one class acquires the properties and behaviors of another class",
+                "correct": true
+            },
+            {
+                "value": "A way to define functions",
+                "correct": false
+            },
+            {
+                "value": "A loop structure",
+                "correct": false
+            },
+            {
+                "value": "A type of comment",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "java",
+        "description": "What is polymorphism in Java?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "The ability of objects to take on many forms",
+                "correct": true
+            },
+            {
+                "value": "A way to create variables",
+                "correct": false
+            },
+            {
+                "value": "A type of loop",
+                "correct": false
+            },
+            {
+                "value": "A mechanism to perform mathematical operations",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "java",
+        "description": "What is encapsulation in Java?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "The bundling of data and methods that operate on the data into a single unit",
+                "correct": true
+            },
+            {
+                "value": "A way to create objects",
+                "correct": false
+            },
+            {
+                "value": "A type of comment",
+                "correct": false
+            },
+            {
+                "value": "A mechanism for conditional statements",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "hard",
-        "topic": "javascript",
-        "description": "What is the output of print(9/2)?",
+        "topic": "java",
+        "description": "What is a Java interface?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "4.5",
+        "options": [{
+                "value": "A collection of abstract methods",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "A way to create arrays",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "A type of loop",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "A mechanism for data storage",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "hard",
-        "topic": "javascript",
-        "description": "What is the output of print(9%2)?",
+        "topic": "java",
+        "description": "What is a Java exception?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "1",
+        "options": [{
+                "value": "An event that disrupts the normal flow of a program",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "A type of loop",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "A way to define classes",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "A mechanism for input and output operations",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "oop",
+        "description": "What does OOP stand for?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "Object-Oriented Programming",
+                "correct": true
+            },
+            {
+                "value": "Object-Oriented Process",
+                "correct": false
+            },
+            {
+                "value": "Object-Oriented Protocol",
+                "correct": false
+            },
+            {
+                "value": "Object-Oriented Project",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "oop",
+        "description": "What is an object in OOP?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "An instance of a class that contains both data and methods",
+                "correct": true
+            },
+            {
+                "value": "A variable",
+                "correct": false
+            },
+            {
+                "value": "A loop structure",
+                "correct": false
+            },
+            {
+                "value": "A type of comment",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "oop",
+        "description": "What is encapsulation in object-oriented programming?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "The concept of wrapping data (attributes) and the methods (functions) that operate on the data into a single unit",
+                "correct": true
+            },
+            {
+                "value": "A type of loop",
+                "correct": false
+            },
+            {
+                "value": "A way to declare variables",
+                "correct": false
+            },
+            {
+                "value": "A mechanism for defining classes",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "oop",
+        "description": "What is inheritance in object-oriented programming?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "The mechanism by which a class can inherit properties and methods from another class",
+                "correct": true
+            },
+            {
+                "value": "A way to create arrays",
+                "correct": false
+            },
+            {
+                "value": "A type of comment",
+                "correct": false
+            },
+            {
+                "value": "A mechanism for conditional statements",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "basic",
+        "topic": "oop",
+        "description": "What is a class in object-oriented programming?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "A blueprint or template for creating objects",
+                "correct": true
+            },
+            {
+                "value": "A loop structure",
+                "correct": false
+            },
+            {
+                "value": "A way to create variables",
+                "correct": false
+            },
+            {
+                "value": "A type of comment",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "oop",
+        "description": "What is polymorphism in object-oriented programming?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "The ability of different classes to be treated as instances of the same class through a common interface",
+                "correct": true
+            },
+            {
+                "value": "A way to create objects",
+                "correct": false
+            },
+            {
+                "value": "A type of loop",
+                "correct": false
+            },
+            {
+                "value": "A mechanism for data storage",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "oop",
+        "description": "What is composition in object-oriented programming?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "The concept of creating a new class by combining existing classes",
+                "correct": true
+            },
+            {
+                "value": "A way to define functions",
+                "correct": false
+            },
+            {
+                "value": "A type of comment",
+                "correct": false
+            },
+            {
+                "value": "A mechanism for input and output operations",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "oop",
+        "description": "What is an abstract class in object-oriented programming?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "A class that cannot be instantiated and is used as a base for other classes",
+                "correct": true
+            },
+            {
+                "value": "A type of loop",
+                "correct": false
+            },
+            {
+                "value": "A way to declare variables",
+                "correct": false
+            },
+            {
+                "value": "A mechanism for defining classes",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "oop",
+        "description": "What is method overloading in object-oriented programming?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "The ability to define multiple methods in the same class with the same name but different parameters",
+                "correct": true
+            },
+            {
+                "value": "A way to create arrays",
+                "correct": false
+            },
+            {
+                "value": "A type of comment",
+                "correct": false
+            },
+            {
+                "value": "A mechanism for conditional statements",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "hard",
-        "topic": "javascript",
-        "description": "What is the output of print(9**2)?",
+        "topic": "oop",
+        "description": "What is the difference between composition and inheritance in object-oriented programming?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "81",
+        "options": [{
+                "value": "Composition is a has-a relationship, while inheritance is an is-a relationship",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "Composition is a way to create objects, while inheritance is a type of loop",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "Inheritance is a way to define functions, while composition is a type of comment",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "Composition is a mechanism for data storage, while inheritance is a mechanism for conditional statements",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "hard",
+        "topic": "oop",
+        "description": "What is the 'super' keyword in object-oriented programming?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "A reference to the parent class",
+                "correct": true
+            },
+            {
+                "value": "A type of loop",
+                "correct": false
+            },
+            {
+                "value": "A way to create variables",
+                "correct": false
+            },
+            {
+                "value": "A type of comment",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "basic",
-        "topic": "javascript",
-        "description": "What is the output of print(9**2)?",
+        "topic": "product_management",
+        "description": "What is the primary goal of product management?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "81",
+        "options": [{
+                "value": "To deliver value to customers and achieve business goals",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "To manage financial accounts",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "To develop software applications",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "To market products to consumers",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "basic",
-        "topic": "javascript",
-        "description": "What is the output of print(9**2)?",
+        "topic": "product_management",
+        "description": "What is a product roadmap in product management?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "81",
+        "options": [{
+                "value": "A visual representation of a product's strategy and direction over time",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "A list of bugs and issues to be fixed",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "A detailed project plan for development",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "A marketing campaign schedule",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "basic",
-        "topic": "javascript",
-        "description": "What is the output of print(9**2)?",
+        "topic": "product_management",
+        "description": "What is the role of a product manager in a software company?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "81",
+        "options": [{
+                "value": "To define the product strategy, prioritize features, and ensure the product meets customer needs",
                 "correct": true
             },
             {
-                "value": "8",
+                "value": "To write code and develop the software product",
                 "correct": false
             },
             {
-                "value": "9",
+                "value": "To handle customer support and resolve technical issues",
                 "correct": false
             },
             {
-                "value": "2",
+                "value": "To design the user interface and user experience (UI/UX)",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "basic",
-        "topic": "SQL",
-        "description": "What is the command to select all columns from a table named 'Persons'?",
+        "topic": "product_management",
+        "description": "What is the purpose of market research in product management?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "SELECT * FROM Persons",
+        "options": [{
+                "value": "To understand customer needs, market trends, and competition",
                 "correct": true
             },
             {
-                "value": "SELECT Persons",
+                "value": "To create advertising campaigns",
                 "correct": false
             },
             {
-                "value": "SELECT Persons.*",
+                "value": "To write product documentation",
                 "correct": false
             },
             {
-                "value": "SELECT * Persons",
+                "value": "To optimize server performance",
                 "correct": false
             }
         ]
     },
     {
         "difficulty_level": "basic",
-        "topic": "SQL",
-        "description": "What is the command to select all columns from a table named 'Persons'?",
+        "topic": "product_management",
+        "description": "What is the minimum viable product (MVP) in product development?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "SELECT * FROM Persons",
+        "options": [{
+                "value": "A version of a product with the minimum features required to satisfy early customers and collect feedback",
                 "correct": true
             },
             {
-                "value": "SELECT Persons",
+                "value": "The most feature-rich version of a product",
                 "correct": false
             },
             {
-                "value": "SELECT Persons.*",
+                "value": "A prototype used for testing",
                 "correct": false
             },
             {
-                "value": "SELECT * Persons",
+                "value": "A completely finished product ready for market launch",
                 "correct": false
             }
         ]
     },
     {
-        "difficulty_level": "basic",
-        "topic": "SQL",
-        "description": "What is the command to select all columns from a table named 'Persons'?",
+        "difficulty_level": "medium",
+        "topic": "product_management",
+        "description": "What is the Kano Model in product management?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "SELECT * FROM Persons",
+        "options": [{
+                "value": "A framework for prioritizing and categorizing customer preferences and features into basic, performance, and delight dimensions",
                 "correct": true
             },
             {
-                "value": "SELECT Persons",
+                "value": "A project management methodology",
                 "correct": false
             },
             {
-                "value": "SELECT Persons.*",
+                "value": "A design pattern for user interfaces",
                 "correct": false
             },
             {
-                "value": "SELECT * Persons",
+                "value": "A financial forecasting model",
                 "correct": false
             }
         ]
     },
     {
-        "difficulty_level": "basic",
-        "topic": "SQL",
-        "description": "What is the command to select all columns from a table named 'Persons'?",
+        "difficulty_level": "medium",
+        "topic": "product_management",
+        "description": "What is the difference between Agile and Waterfall methodologies in product development?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "SELECT * FROM Persons",
+        "options": [{
+                "value": "Agile is iterative and flexible, while Waterfall is linear and sequential",
                 "correct": true
             },
             {
-                "value": "SELECT Persons",
+                "value": "Agile is a heavier and more formal methodology than Waterfall",
                 "correct": false
             },
             {
-                "value": "SELECT Persons.*",
+                "value": "Agile does not involve customer feedback",
                 "correct": false
             },
             {
-                "value": "SELECT * Persons",
+                "value": "Waterfall is better suited for rapidly changing markets",
                 "correct": false
             }
         ]
     },
     {
-        "difficulty_level": "basic",
-        "topic": "SQL",
-        "description": "What is the command to select all columns from a table named 'Persons'?",
+        "difficulty_level": "medium",
+        "topic": "product_management",
+        "description": "What is a user story in Agile product development?",
         "type_question": "multiple_choice",
-        "options": [
-            {
-                "value": "SELECT * FROM Persons",
+        "options": [{
+                "value": "A short, simple description of a feature told from the perspective of the person who desires the new capability",
                 "correct": true
             },
             {
-                "value": "SELECT Persons",
+                "value": "A bug report",
                 "correct": false
             },
             {
-                "value": "SELECT Persons.*",
+                "value": "A user manual",
                 "correct": false
             },
             {
-                "value": "SELECT * Persons",
+                "value": "A marketing campaign",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "medium",
+        "topic": "product_management",
+        "description": "What is the role of a product owner in Scrum Agile methodology?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "To represent the customer and define what needs to be built in the product backlog",
+                "correct": true
+            },
+            {
+                "value": "To lead the development team and write code",
+                "correct": false
+            },
+            {
+                "value": "To conduct market research and write documentation",
+                "correct": false
+            },
+            {
+                "value": "To manage financial accounts and budgets",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "hard",
+        "topic": "product_management",
+        "description": "What is a product-market fit in product management?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "When a product satisfies a strong market demand and meets the needs of a specific target audience",
+                "correct": true
+            },
+            {
+                "value": "When a product is available in multiple international markets",
+                "correct": false
+            },
+            {
+                "value": "When a product has the highest market share in its category",
+                "correct": false
+            },
+            {
+                "value": "When a product is still in development",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "difficulty_level": "hard",
+        "topic": "product_management",
+        "description": "What is the Chasm Theory in product management?",
+        "type_question": "multiple_choice",
+        "options": [{
+                "value": "A model that describes the gap between early adopters and mainstream market adoption of a product",
+                "correct": true
+            },
+            {
+                "value": "A theory about the lifecycle of a product",
+                "correct": false
+            },
+            {
+                "value": "A marketing strategy for established products",
+                "correct": false
+            },
+            {
+                "value": "A theory about pricing strategies",
                 "correct": false
             }
         ]
