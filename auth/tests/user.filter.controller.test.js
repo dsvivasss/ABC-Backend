@@ -16,7 +16,6 @@ describe('Retrieve User Endpoint', () => {
     }
 
     let appServer = {}
-    let token = '';
 
     beforeAll(async () => {
         appServer = app.listen(3012);
@@ -24,14 +23,12 @@ describe('Retrieve User Endpoint', () => {
             .post('/users/')
             .send(user)
 
-        const res = await request(app)
+        await request(app)
             .post('/users/auth/')
             .send({
                 email: user.email,
                 password: user.password
             });
-
-        token = res.body.token;
 
         await new Promise(r => setTimeout(r, 3000));
     }, 10000)
