@@ -1,6 +1,9 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const {
+    Op
+} = require("sequelize");
 
 const register = async (req, res) => {
 
@@ -138,8 +141,6 @@ const login = async (req, res) => {
     }
 };
 
-
-
 const retrieveUser = async (req, res) => {
 
     try {
@@ -164,6 +165,43 @@ const retrieveUser = async (req, res) => {
     }
 }
 
+const filter_users = async (req, res) => {
+
+    const {
+        skill,
+        personality,
+    } = req.query;
+
+    const users = await User.findAll({
+        attributes: [
+            'id',
+            'name',
+            'email',
+            'phone',
+            'country',
+            'skills',
+            'personality'
+        ],
+        where: {
+            skills: skill ? {
+                [Op.contains]: [skill]
+            } : {
+                [Op.ne]: null
+            },
+            personality: personality ? {
+                [Op.contains]: [personality]
+            } : {
+                [Op.ne]: null
+            }
+        }
+    });
+
+    res.status(200).json({
+        users
+    });
+
+}
+
 const healthCheck = async (req, res) => {
     res.status(200).send('pong');
 }
@@ -172,5 +210,6 @@ module.exports = {
     register,
     login,
     retrieveUser,
+    filter_users,
     healthCheck,
 };
