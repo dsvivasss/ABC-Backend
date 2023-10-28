@@ -24,3 +24,5 @@ functions:
       - http:
           path: /questions
           method: ANY
+plugins:
+  - serverless-offline

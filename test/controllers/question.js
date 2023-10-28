@@ -20,7 +20,6 @@ const populate = async (req, res) => {
         })
 
         question.options.forEach(async (option) => {
-            console.log({option})
             await Option.create({
                 description: option.value,
                 correct_answer: option.correct,

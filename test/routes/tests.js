@@ -4,7 +4,7 @@ const {
 const {
     create,
     healthCheck
-} = require("../controllers/test.js");
+} = require("../controllers/tests.js");
 
 const router = Router();
 

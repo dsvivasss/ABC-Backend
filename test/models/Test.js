@@ -3,6 +3,7 @@ const {
     DataTypes
 } = require('sequelize');
 const sequelize = require('../config/db.js');
+const env = process.env.NODE_ENV
 
 const Test = sequelize.define("test", {
     id: {
@@ -36,17 +37,53 @@ const Test = sequelize.define("test", {
         allowNull: true,
     },
     hard_skills: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: env !== 'test' ? DataTypes.ARRAY(DataTypes.STRING) : DataTypes.STRING,
         allowNull: true,
+        get() {
+            const rawValue = this.getDataValue('hard_skills')
+            if (env !== 'test') return rawValue
+            return rawValue ? JSON.parse(rawValue) : []
+        },
+        set(value) {
+            if (env !== 'test') {
+                this.setDataValue('hard_skills', value)
+                return
+            }
+            this.setDataValue('hard_skills', JSON.stringify(value))
+        }
     },
     users: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
+        type: env !== 'test' ? DataTypes.ARRAY(DataTypes.STRING) : DataTypes.STRING,
         allowNull: true,
+        get() {
+            const rawValue = this.getDataValue('users')
+            if (env !== 'test') return rawValue
+            return rawValue ? JSON.parse(rawValue) : []
+        },
+        set(value) {
+            if (env !== 'test') {
+                this.setDataValue('users', value)
+                return
+            }
+            this.setDataValue('users', JSON.stringify(value))
+        }
     },
     questions: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
+        type: env !== 'test' ? DataTypes.ARRAY(DataTypes.STRING) : DataTypes.STRING,
         allowNull: true,
-    },
+        get() {
+            const rawValue = this.getDataValue('questions')
+            if (env !== 'test') return rawValue
+            return rawValue ? JSON.parse(rawValue) : []
+        },
+        set(value) {
+            if (env !== 'test') {
+                this.setDataValue('questions', value)
+                return
+            }
+            this.setDataValue('questions', JSON.stringify(value))
+        }
+    }
 });
 
 module.exports = Test;
