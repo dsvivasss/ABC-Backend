@@ -1,0 +1,28 @@
+service: abctest
+provider:
+  name: aws
+  runtime: nodejs18.x
+  apiGateway:
+    restApiId:
+      "Fn::ImportValue": SharedGWrestApiId
+    restApiRootResourceId:
+      "Fn::ImportValue": SharedGWrootResourceId
+functions:
+  project:
+    handler: index.handler
+    name: abctest
+    events:
+      - http:
+          path: /tests/{proxy+}
+          method: ANY
+      - http:
+          path: /tests
+          method: ANY
+      - http:
+          path: /questions/{proxy+}
+          method: ANY
+      - http:
+          path: /questions
+          method: ANY
+plugins:
+  - serverless-offline
