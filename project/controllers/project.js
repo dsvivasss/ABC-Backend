@@ -28,7 +28,9 @@ const create = async (req, res) => {
             roles,
         });
 
-        console.log({project});
+        console.log({
+            project
+        });
 
         res.status(201).json({
             id: project.id,
@@ -41,7 +43,9 @@ const create = async (req, res) => {
         });
 
     } catch (err) {
-        console.log({err});
+        console.log({
+            err
+        });
         res.status(500).json({
             message: 'Error finding company',
             error: err
@@ -54,7 +58,25 @@ const healthCheck = async (req, res) => {
     res.status(200).send('pong');
 }
 
+const retrieveProjectsFromCompany = async (req, res) => {
+    const {
+        company_id,
+    } = req.params;
+
+    const projects = await Project.findAll({
+        where: {
+            company_id,
+        }
+    });
+
+    res.status(200).json({
+        projects,
+    });
+
+}
+
 module.exports = {
     create,
+    retrieveProjectsFromCompany,
     healthCheck,
 };
