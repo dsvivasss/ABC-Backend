@@ -1,4 +1,5 @@
 const Project = require('../models/Project');
+const Sequelize = require('sequelize');
 
 const create = async (req, res) => {
 
@@ -54,6 +55,60 @@ const create = async (req, res) => {
 
 }
 
+const selectCandidate = async (req, res) => {
+
+    const {
+        project_id, 
+        candidate_id
+    } = req.params;
+
+    if (!project_id || !candidate_id) {
+        return res.status(400).json({
+            message: 'Bad Request: Missing required fields'
+        });
+    }
+
+    const project = await Project.findOne({
+        where: {
+            id: project_id,
+        }
+    });
+
+    if (!project) {
+        return res.status(404).json({
+            message: 'Project not found'
+        });
+    }
+
+    console.log({
+        project
+    });
+
+    // Check if project.candidates includes is null or undefined
+    if (!project.users_assigned) {
+        project.users_assigned = [];
+        console.log('project.users_assigned is null or undefined');
+    }
+
+    if (project.users_assigned.includes(candidate_id)) {
+        return res.status(400).json({
+            message: 'Candidate already selected'
+        });
+    }
+
+
+    Project.update(
+        {users_assigned: Sequelize.fn('array_append', Sequelize.col('users_assigned'), candidate_id)},
+        {where: {id: project_id}}
+       );
+
+    await project.save();
+
+    res.status(200).json({
+        message: 'Candidate selected successfully'
+    });
+}
+
 const healthCheck = async (req, res) => {
     res.status(200).send('pong');
 }
@@ -78,5 +133,6 @@ const retrieveProjectsFromCompany = async (req, res) => {
 module.exports = {
     create,
     retrieveProjectsFromCompany,
+    selectCandidate,
     healthCheck,
 };
