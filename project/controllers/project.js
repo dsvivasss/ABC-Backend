@@ -48,7 +48,7 @@ const create = async (req, res) => {
             err
         });
         res.status(500).json({
-            message: 'Error finding company',
+            message: 'Error creating project',
             error: err
         });
     }
@@ -62,12 +62,6 @@ const selectCandidate = async (req, res) => {
         candidate_id
     } = req.params;
 
-    if (!project_id || !candidate_id) {
-        return res.status(400).json({
-            message: 'Bad Request: Missing required fields'
-        });
-    }
-
     const project = await Project.findOne({
         where: {
             id: project_id,
@@ -80,25 +74,19 @@ const selectCandidate = async (req, res) => {
         });
     }
 
-    console.log({
-        project
-    });
-
     // Check if project.candidates includes is null or undefined
-    if (!project.users_assigned) {
-        project.users_assigned = [];
-        console.log('project.users_assigned is null or undefined');
+    if (!project.users_selected) {
+        project.users_selected = [];
     }
 
-    if (project.users_assigned.includes(candidate_id)) {
+    if (project.users_selected.includes(candidate_id)) {
         return res.status(400).json({
             message: 'Candidate already selected'
         });
     }
 
-
     Project.update(
-        {users_assigned: Sequelize.fn('array_append', Sequelize.col('users_assigned'), candidate_id)},
+        {users_selected: Sequelize.fn('array_append', Sequelize.col('users_selected'), candidate_id)},
         {where: {id: project_id}}
        );
 

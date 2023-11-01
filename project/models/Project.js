@@ -84,7 +84,7 @@ const Project = sequelize.define("project", {
         get() {
             const rawValue = this.getDataValue('users_selected')
             if (env !== 'test') return rawValue
-            return rawValue ? JSON.parse(rawValue) : []
+            return rawValue ? JSON.parse(rawValue) : null
         },
         set(value) {
             if (env !== 'test') {
@@ -100,7 +100,7 @@ const Project = sequelize.define("project", {
         get() {
             const rawValue = this.getDataValue('users_assigned')
             if (env !== 'test') return rawValue
-            return rawValue ? JSON.parse(rawValue) : []
+            return rawValue ? JSON.parse(rawValue) : null
         },
         set(value) {
             if (env !== 'test') {
