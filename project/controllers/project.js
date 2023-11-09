@@ -97,6 +97,29 @@ const selectCandidate = async (req, res) => {
     });
 }
 
+const retrieveSelectedCandidates = async (req, res) => {
+
+    const {
+        project_id,
+    } = req.params;
+
+    const project = await Project.findOne({
+        where: {
+            id: project_id,
+        }
+    });
+
+    if (!project) {
+        return res.status(404).json({
+            message: 'Project not found'
+        });
+    }
+
+    res.status(200).json({
+        users_selected: project.users_selected,
+    });
+}
+
 const healthCheck = async (req, res) => {
     res.status(200).send('pong');
 }
@@ -122,5 +145,6 @@ module.exports = {
     create,
     retrieveProjectsFromCompany,
     selectCandidate,
+    retrieveSelectedCandidates,
     healthCheck,
 };
