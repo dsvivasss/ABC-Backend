@@ -1,4 +1,5 @@
 const Project = require('../models/Project');
+const Sequelize = require('sequelize');
 
 const create = async (req, res) => {
 
@@ -47,11 +48,53 @@ const create = async (req, res) => {
             err
         });
         res.status(500).json({
-            message: 'Error finding company',
+            message: 'Error creating project',
             error: err
         });
     }
 
+}
+
+const selectCandidate = async (req, res) => {
+
+    const {
+        project_id, 
+        candidate_id
+    } = req.params;
+
+    const project = await Project.findOne({
+        where: {
+            id: project_id,
+        }
+    });
+
+    if (!project) {
+        return res.status(404).json({
+            message: 'Project not found'
+        });
+    }
+
+    // Check if project.candidates includes is null or undefined
+    if (!project.users_selected) {
+        project.users_selected = [];
+    }
+
+    if (project.users_selected.includes(candidate_id)) {
+        return res.status(400).json({
+            message: 'Candidate already selected'
+        });
+    }
+
+    Project.update(
+        {users_selected: Sequelize.fn('array_append', Sequelize.col('users_selected'), candidate_id)},
+        {where: {id: project_id}}
+       );
+
+    await project.save();
+
+    res.status(200).json({
+        message: 'Candidate selected successfully'
+    });
 }
 
 const healthCheck = async (req, res) => {
@@ -78,5 +121,6 @@ const retrieveProjectsFromCompany = async (req, res) => {
 module.exports = {
     create,
     retrieveProjectsFromCompany,
+    selectCandidate,
     healthCheck,
 };

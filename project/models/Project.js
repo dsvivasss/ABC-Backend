@@ -77,6 +77,38 @@ const Project = sequelize.define("project", {
             }
             this.setDataValue('roles', JSON.stringify(value))
         }
+    },
+    users_selected: {
+        type: env !== 'test' ? DataTypes.ARRAY(DataTypes.STRING) : DataTypes.STRING,
+        allowNull: true,
+        get() {
+            const rawValue = this.getDataValue('users_selected')
+            if (env !== 'test') return rawValue
+            return rawValue ? JSON.parse(rawValue) : null
+        },
+        set(value) {
+            if (env !== 'test') {
+                this.setDataValue('users_selected', value)
+                return
+            }
+            this.setDataValue('users_selected', JSON.stringify(value))
+        }
+    },
+    users_assigned: {
+        type: env !== 'test' ? DataTypes.ARRAY(DataTypes.STRING) : DataTypes.STRING,
+        allowNull: true,
+        get() {
+            const rawValue = this.getDataValue('users_assigned')
+            if (env !== 'test') return rawValue
+            return rawValue ? JSON.parse(rawValue) : null
+        },
+        set(value) {
+            if (env !== 'test') {
+                this.setDataValue('users_assigned', value)
+                return
+            }
+            this.setDataValue('users_assigned', JSON.stringify(value))
+        }
     }
 });
 
