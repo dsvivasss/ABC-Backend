@@ -27,10 +27,8 @@ const create = async (req, res) => {
             soft_skills,
             hard_skills,
             roles,
-        });
-
-        console.log({
-            project
+            users_assigned: [],
+            users_selected: [],
         });
 
         res.status(201).json({
@@ -41,6 +39,8 @@ const create = async (req, res) => {
             soft_skills: project.soft_skills,
             hard_skills: project.hard_skills,
             roles: project.roles,
+            users_assigned: project.users_assigned,
+            users_selected: project.users_selected,
         });
 
     } catch (err) {
@@ -58,7 +58,7 @@ const create = async (req, res) => {
 const selectCandidate = async (req, res) => {
 
     const {
-        project_id, 
+        project_id,
         candidate_id
     } = req.params;
 
@@ -85,15 +85,81 @@ const selectCandidate = async (req, res) => {
         });
     }
 
-    Project.update(
-        {users_selected: Sequelize.fn('array_append', Sequelize.col('users_selected'), candidate_id)},
-        {where: {id: project_id}}
-       );
+    Project.update({
+        users_selected: Sequelize.fn('array_append', Sequelize.col('users_selected'), candidate_id)
+    }, {
+        where: {
+            id: project_id
+        }
+    });
 
     await project.save();
 
     res.status(200).json({
         message: 'Candidate selected successfully'
+    });
+}
+
+const assignCandidate = async (req, res) => {
+
+    const {
+        project_id,
+        candidate_id
+    } = req.params;
+
+    const project = await Project.findOne({
+        where: {
+            id: project_id,
+        }
+    });
+
+    if (!project) {
+        return res.status(404).json({
+            message: 'Project not found'
+        });
+    }
+
+    if (!project.users_selected) {
+        return res.status(400).json({
+            message: 'You must select the candidate first in order to assign it'
+        });
+    }
+
+    // Check if project.candidates includes is null or undefined
+    if (!project.users_selected.includes(candidate_id)) {
+        return res.status(400).json({
+            message: 'You must select the candidate first in order to assign it'
+        });
+    }
+
+    // Check if project.candidates includes is null or undefined
+    // istanbul ignore next
+    if (!project.users_assigned) {
+        project.users_assigned = [];
+    }
+
+    // istanbul ignore next
+    if (project.users_assigned.includes(candidate_id)) {
+        return res.status(400).json({
+            message: 'Candidate already assigned'
+        });
+    }
+
+    // istanbul ignore next
+    Project.update({
+        users_assigned: Sequelize.fn('array_append', Sequelize.col('users_assigned'), candidate_id)
+    }, {
+        where: {
+            id: project_id
+        }
+    });
+
+    // istanbul ignore next
+    await project.save();
+
+    // istanbul ignore next
+    res.status(200).json({
+        message: 'Candidate assigned successfully'
     });
 }
 
@@ -138,12 +204,12 @@ const retrieveProjectsFromCompany = async (req, res) => {
     res.status(200).json({
         projects,
     });
-
 }
 
 module.exports = {
     create,
     retrieveProjectsFromCompany,
+    assignCandidate,
     selectCandidate,
     retrieveSelectedCandidates,
     healthCheck,
