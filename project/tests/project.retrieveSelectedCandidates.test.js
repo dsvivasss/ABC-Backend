@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+// NOSONAR
 describe('Retrieve Selected Candidates Endpoint', () => {
 
     const project = {
