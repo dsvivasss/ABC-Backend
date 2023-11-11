@@ -19,7 +19,7 @@ describe('Assign Candidate into Project Endpoint', () => {
     let project_id = 0;
 
     beforeAll(async () => {
-        appServer = await app.listen(3003);
+        appServer = await app.listen(3004);
 
         await new Promise(r => setTimeout(r, 3000));
 
