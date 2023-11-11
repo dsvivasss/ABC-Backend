@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+// NOSONAR
 describe('Assign Candidate into Project Endpoint', () => {
 
     const project = {
