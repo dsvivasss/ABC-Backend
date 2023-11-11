@@ -7,12 +7,12 @@ dotenv.config();
 describe('Assign Candidate into Project Endpoint', () => {
 
     const project = {
-        "company_id": 1,
-        "title": "Primer proyecto",
-        "description": "Descripcion basica de mi primer proyecto",
-        "soft_skills": ["Trabajo en equipo", "Buena comunicación"],
-        "hard_skills": ["Python", "SQL"],
-        "roles": ["Product manager", "Junior Programmer"]
+        "company_id": 2,
+        "title": "Sgundo proyecto",
+        "description": "Descripcion basica de mi segundo proyecto",
+        "soft_skills": ["Trabajo en equipom2", "Buena comunicación 2"],
+        "hard_skills": ["Python 2", "SQL 2"],
+        "roles": ["Product manager 2", "Junior Programmer 2"]
     }
 
     let appServer = {}
@@ -42,20 +42,6 @@ describe('Assign Candidate into Project Endpoint', () => {
 
         expect(res.statusCode).toEqual(400);
     })
-
-    // it('should return 200 when a candidate is assigned', async () => {
-
-    //     await request(app)
-    //         .post(`/projects/${project_id}/selectcandidates/17`)
-
-    //     const getRes = await request(app)
-    //         .get(`/projects/${project_id}/selectedcandidates`)
-
-    //     const res = await request(app)
-    //         .post(`/projects/${project_id}/assigncandidates/17`)
-
-    //     expect(res.statusCode).toEqual(200);
-    // })
 
     it('should return 404 when a project is not found', async () => {
         const res = await request(app)
