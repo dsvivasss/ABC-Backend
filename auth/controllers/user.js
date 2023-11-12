@@ -171,10 +171,6 @@ const retrieveUsers = async (req, res) => {
         ids
     } = req.body;
 
-    console.log({
-        ids
-    });
-
     const users = await User.findAll({
         attributes: [
             'id',
