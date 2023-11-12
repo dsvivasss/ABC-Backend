@@ -41,11 +41,26 @@ const create = async (req, res) => {
 
 }
 
+const retrieveTests = async (req, res) => {
+    const {
+        project_id
+    } = req.params
+    
+    const tests = await Test.findAll({
+        where: {
+            project_id
+        }
+    })
+
+    return res.status(200).json(tests)
+}
+
 const healthCheck = async (req, res) => {
     res.status(200).send('pong');
 }
 
 module.exports = {
     create,
+    retrieveTests,
     healthCheck,
 };
