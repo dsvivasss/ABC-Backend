@@ -165,6 +165,39 @@ const retrieveUser = async (req, res) => {
     }
 }
 
+const retrieveUsers = async (req, res) => {
+
+    const {
+        ids
+    } = req.body;
+
+    console.log({
+        ids
+    });
+
+    const users = await User.findAll({
+        attributes: [
+            'id',
+            'name',
+            'email',
+            'phone',
+            'country',
+            'skills',
+            'personality'
+        ],
+        where: {
+            id: {
+                [Op.in]: ids
+            }
+        }
+    });
+
+    res.status(200).json({
+        users
+    });
+
+}
+
 const filter_users = async (req, res) => {
 
     const {
@@ -210,6 +243,7 @@ module.exports = {
     register,
     login,
     retrieveUser,
+    retrieveUsers,
     filter_users,
     healthCheck,
 };
