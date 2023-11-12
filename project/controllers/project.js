@@ -1,5 +1,8 @@
 const Project = require('../models/Project');
 const Sequelize = require('sequelize');
+const dotenv = require('dotenv');
+const fetch = require('node-fetch');
+dotenv.config();
 
 const create = async (req, res) => {
 
@@ -181,9 +184,24 @@ const retrieveSelectedCandidates = async (req, res) => {
         });
     }
 
-    res.status(200).json({
-        users_selected: project.users_selected,
-    });
+    const obj = {
+        ids: project.users_selected,
+    }
+
+    const request = await fetch(`${process.env.URL}/users/findmany`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(obj),
+        });
+
+    const response = await request.json();
+
+    res.status(200).json(
+        response
+    );
 }
 
 const healthCheck = async (req, res) => {
