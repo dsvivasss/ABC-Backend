@@ -204,6 +204,45 @@ const retrieveSelectedCandidates = async (req, res) => {
     );
 }
 
+// istanbul ignore next
+const retrieveAssignedCandidates = async (req, res) => {
+
+    const {
+        project_id,
+    } = req.params;
+
+    const project = await Project.findOne({
+        where: {
+            id: project_id,
+        }
+    });
+
+    if (!project) {
+        return res.status(404).json({
+            message: 'Project not found'
+        });
+    }
+
+    const obj = {
+        ids: project.users_assigned,
+    }
+
+    const request = await fetch(`${process.env.URL}/users/findmany`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(obj),
+        });
+
+    const response = await request.json();
+
+    res.status(200).json(
+        response
+    );
+}
+
 const healthCheck = async (req, res) => {
     res.status(200).send('pong');
 }
@@ -229,6 +268,7 @@ module.exports = {
     retrieveProjectsFromCompany,
     assignCandidate,
     selectCandidate,
+    retrieveAssignedCandidates,
     retrieveSelectedCandidates,
     healthCheck,
 };
