@@ -24,5 +24,11 @@ functions:
       - http:
           path: /questions
           method: ANY
+      - http:
+          path: /submissions/{proxy+}
+          method: ANY
+      - http:
+          path: /submissions
+          method: ANY
 plugins:
   - serverless-offline
