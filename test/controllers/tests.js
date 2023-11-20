@@ -1,4 +1,7 @@
 const Test = require('../models/Test');
+const Question = require('../models/Question');
+const Option = require('../models/Option');
+const fetch = require('node-fetch');
 
 const {
     Op
@@ -51,6 +54,37 @@ const retrieveTests = async (req, res) => {
             project_id
         }
     })
+
+    const request = await fetch(`${process.env.URL}/projects/${project_id}/selectedcandidates`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+    const response = await request.json();
+
+    for (const test of tests) {
+        const questions = await Question.findAll({
+            where: {
+                id: {
+                    [Op.in]: test.questions
+                }
+            },
+            include: {
+                model: Option
+            }
+        });
+    
+        const questionsJSON = questions.map(question => question.toJSON());
+    
+        test.questions = questionsJSON;
+    }
+
+    tests.map(test => (
+        test.users = response.users
+    ))
 
     return res.status(200).json(tests)
 }
