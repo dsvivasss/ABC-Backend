@@ -13,7 +13,7 @@ app.use(cors())
 // Routes
 app.use(projectRoutes)
 
-process.env.NODE_ENV === 'local' ? app.listen(3000, () => console.log("Server running on port 3000")) : null;
+// process.env.NODE_ENV === 'local' ? app.listen(3000, () => console.log("Server running on port 3000")) : null;
 
 if (process.env.NODE_ENV === 'test') {
     module.exports = app

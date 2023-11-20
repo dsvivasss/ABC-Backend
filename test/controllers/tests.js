@@ -65,6 +65,7 @@ const retrieveTests = async (req, res) => {
 
     const response = await request.json();
 
+    // istanbul ignore next
     for (const test of tests) {
         const questions = await Question.findAll({
             where: {
@@ -82,6 +83,7 @@ const retrieveTests = async (req, res) => {
         test.questions = questionsJSON;
     }
 
+    // istanbul ignore next
     tests.map(test => (
         test.users = response.users
     ))

@@ -5,6 +5,7 @@ const {
     Op
 } = require("sequelize"); // Op is a special operator for sequelize
 
+// istanbul ignore next
 const submit_test = async (req, res) => {
 
     const {

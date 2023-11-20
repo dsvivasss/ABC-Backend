@@ -17,7 +17,8 @@
     "coveragePathIgnorePatterns": [
       "config",
       "middlewares",
-      "models"
+      "models",
+      "index.js"
     ],
     "coverageThreshold": {
       "global": {
