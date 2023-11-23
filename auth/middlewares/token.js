@@ -8,6 +8,8 @@ function token(req, res, next) {
         '/users',
         '/users/auth',
         '/users/ping',
+        '/users/findmany/',
+        '/users/findmany',
         '/companies/',
         '/companies/auth/',
         '/companies/ping/',

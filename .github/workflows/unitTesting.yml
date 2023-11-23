@@ -33,6 +33,14 @@ jobs:
       working-directory: ./project
       run: npm run test:coverage
 
-
-
-      
+  test-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      working-directory: ./test
+      run: npm install
+    - name: Run tests with Jest
+      working-directory: ./test
+      run: npm run test:coverage

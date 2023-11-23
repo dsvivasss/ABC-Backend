@@ -12,3 +12,8 @@ services:
     path: project
     dependsOn:
       - gateway
+
+  test:
+    path: test
+    dependsOn:
+      - gateway

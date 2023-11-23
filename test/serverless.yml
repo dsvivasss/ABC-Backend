@@ -1,4 +1,4 @@
-service: abcauth
+service: abctest
 provider:
   name: aws
   runtime: nodejs18.x
@@ -8,24 +8,27 @@ provider:
     restApiRootResourceId:
       "Fn::ImportValue": SharedGWrootResourceId
 functions:
-  auth:
+  project:
     handler: index.handler
-    name: abcauth
+    name: abctest
     events:
-      # - httpApi:
-      #     path: /auth/{proxy+}
-      #     method: '*'
       - http:
-          path: /users
+          path: /tests/{proxy+}
           method: ANY
       - http:
-          path: /users/{proxy+}
+          path: /tests
           method: ANY
       - http:
-          path: /companies
+          path: /questions/{proxy+}
           method: ANY
       - http:
-          path: /companies/{proxy+}
+          path: /questions
+          method: ANY
+      - http:
+          path: /submissions/{proxy+}
+          method: ANY
+      - http:
+          path: /submissions
           method: ANY
 plugins:
   - serverless-offline
