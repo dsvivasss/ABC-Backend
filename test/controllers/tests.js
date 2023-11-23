@@ -1,6 +1,7 @@
 const Test = require('../models/Test');
 const Question = require('../models/Question');
 const Option = require('../models/Option');
+const Submission = require('../models/Submission');
 const fetch = require('node-fetch');
 
 const {
@@ -67,6 +68,12 @@ const retrieveTests = async (req, res) => {
 
     // istanbul ignore next
     for (const test of tests) {
+        const submissions = await Submission.findAll({
+            where: {
+                test_id: test.id
+            }
+        });
+
         const questions = await Question.findAll({
             where: {
                 id: {
@@ -88,7 +95,19 @@ const retrieveTests = async (req, res) => {
         test.users = response.users
     ))
 
-    return res.status(200).json(tests)
+    const testsJSON = [...tests.map(test => test.toJSON())];
+
+    for (const test of testsJSON) {
+        const submissions = await Submission.findAll({
+            where: {
+                test_id: test.id
+            }
+        });
+
+        test.submissions = submissions;
+    }
+
+    return res.status(200).json(testsJSON)
 }
 
 const healthCheck = async (req, res) => {

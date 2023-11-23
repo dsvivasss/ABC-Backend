@@ -265,9 +265,29 @@ const retrieveProjectsFromCompany = async (req, res) => {
     });
 }
 
+//istanbul ignore next
+const retrieveProjectsFromUser = async (req, res) => {
+    const {
+        user_id,
+    } = req.params;
+
+    const projects = await Project.findAll({
+        where: {
+            users_selected: {
+                [Sequelize.Op.contains]: [user_id]
+            }
+        }
+    });
+
+    res.status(200).json({
+        projects,
+    });
+}
+
 module.exports = {
     create,
     retrieveProjectsFromCompany,
+    retrieveProjectsFromUser,
     assignCandidate,
     selectCandidate,
     retrieveAssignedCandidates,

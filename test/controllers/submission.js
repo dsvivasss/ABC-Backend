@@ -11,34 +11,37 @@ const submit_test = async (req, res) => {
     const {
         test_id,
         user_id,
+        project_id,
         score
     } = req.body
 
-    if(!test_id || !user_id) {
+    if(!test_id || !user_id || !project_id || !score) {
         return res.status(400).json({
-            message: 'Test id and user id are required'
+            message: 'Missing required fields'
         })
     }
+    
+    // Check if user has already submitted a test for this project
+    const existing_submission = await Submission.findOne({
+        where: {
+            [Op.and]: [{
+                user_id: user_id
+            }, {
+                test_id: test_id
+            }]
+        }
+    })
 
-   // Check if Test exists
-    const test = await Test.findByPk(test_id)
-    if (!test) {
-        return res.status(400).json({
-            message: 'Test not found'
-        })
-    }
-
-    // Check if user_id in test.users
-    const users = test.users
-    if (!users.includes(user_id)) {
-        return res.status(400).json({
-            message: 'User not registered in this test'
+    if (existing_submission) {
+        return res.status(409).json({
+            message: 'User has already submitted this test'
         })
     }
 
     const obj = {
         test_id,
         user_id,
+        project_id,
         score
     }
 
