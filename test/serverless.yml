@@ -30,5 +30,3 @@ functions:
       - http:
           path: /submissions
           method: ANY
-plugins:
-  - serverless-offline
