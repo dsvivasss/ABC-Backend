@@ -18,5 +18,3 @@ functions:
       - http:
           path: /projects
           method: ANY
-plugins:
-  - serverless-offline
