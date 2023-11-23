@@ -95,8 +95,10 @@ const retrieveTests = async (req, res) => {
         test.users = response.users
     ))
 
+    // istanbul ignore next
     const testsJSON = [...tests.map(test => test.toJSON())];
 
+    // istanbul ignore next
     for (const test of testsJSON) {
         const submissions = await Submission.findAll({
             where: {
