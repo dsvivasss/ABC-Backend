@@ -19,6 +19,10 @@ const Submission = sequelize.define("submission", {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    project_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
     score: {
         type: DataTypes.STRING,
         allowNull: true,
